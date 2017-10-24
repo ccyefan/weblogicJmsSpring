@@ -1,0 +1,103 @@
+梁建全:liangjq@tarena.com.cn
+=================
+1.框架学习
+a.框架有什么作用,能帮我们做什么
+b.帮我做了哪些事,需要我们配合做哪些事
+c.熟悉框架的设计思想，至于如何实现
+  以后再去考虑
+d.练习时多练习几遍,掌握开发主要步骤
+======Spring框架========
+1.Spring框架作用
+ *a.Spring Core（IOC功能）
+ b.Spring AOP功能
+  (管理组件对象,维护对象关系,
+  目的：降低组件耦合度)
+ c.Spring Web MVC功能
+  (MVC设计,
+  目的：架构一个MVC结构的Web程序)
+ d.Spring整合其他技术，例如JDBC,
+  MyBatis,Hibernate,Struts等
+
+Spring-->整合API-->调用原有技术API
+在Spring中使用整合API编程
+Spring-->JdbcTemplate-->Connection,Statement
+JdbcTemplate.update(sql,params);
+
+请求-->Servlet-->Service-->多个Dao
+--》JSP
+
+EmpService
+EmpDao dao = new EmpDao();
+dao.save();
+
+
+2.SpringIOC应用
+ a.管理对象
+  创建、初始化、释放资源、销毁
+
+ b.维护对象关系
+  采用注入方式建立对象关系.
+  Dependency Injection (DI) 依赖注入
+  依赖注入：set方法注入,构造器注入
+
+ c.搭建SpringIOC开发环境
+  --引入相关jar包
+  --在src添加applicationContext.xml
+
+
+
+ApplicationContext容器对象
+  -->applicationContext.xml--><bean>
+
+
+
+List-->存取对象的集合
+a.创建List对象
+b.往List添加对象元素 
+c.从List取对象元素
+
+Spring 容器-->管理组件及对象关系
+a.创建ApplicationContext对象
+b.向applicationContext.xml配置<bean>
+c.利用ApplicationContext对象getBean()
+
+2.Spring创建Bean对象的控制
+ *a.控制对象创建方式(使用范围)
+ 在<bean>元素中使用scope属性控制
+ scope可以支持singleton或prototype
+ 默认值是singleton
+ <bean scope="singleton">该组件在Spring
+容器里只有一个bean对象
+ <bean scope="prototype">该组件每次
+ac.getBean("id");都返回一个新的对象.
+
+ b.指定对象初始化方法
+ 利用<bean>元素的init-method指定。
+ 当创建对象后自动执行init-method方法
+
+ c.指定对象销毁方法
+ 利用<bean>元素的destroy-method指定。
+ 满足下面条件才有效
+ --组件对象为单例模式
+ --调用AbstractApplicationContext容器
+   对象的close()方法
+ 
+ d.控制单例对象创建时机
+   在默认情况下，单例对象是Spring容器
+创建时实例化;可以使用<bean>元素的
+lazy-init=true属性将创建时机推迟到
+getBean()方法调用时.
+
+
+ IOC概念：
+Inversion of Control控制反转或反向控制
+
+控制反转：改变了对象获取方式.之前编码
+方式采用new构造器方式获取对象;ioc中
+采用由容器创建对象之后注入进来使用。
+只要修改配置就可以改变对象关系
+
+A-->B
+setB
+
+
